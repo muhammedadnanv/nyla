@@ -110,34 +110,33 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-7">
-                    <p class="text-center mb-4">The contact form is currently inactive. Get a functional and working
-                        contact form with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code
-                        and you're done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
+                    <p class="text-center mb-4">Have a vision for your space?
+                        Let Nyla Interior Designer turn it into reality.</p>
                     <div class="wow fadeIn" data-wow-delay="0.3s">
-                        <form>
+                        <form id="whatsappForm">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject" required>
                                         <label for="subject">Subject</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Leave a message here" id="message"
-                                            style="height: 150px"></textarea>
+                                            style="height: 150px" required></textarea>
                                         <label for="message">Message</label>
                                     </div>
                                 </div>
@@ -146,6 +145,28 @@
                                 </div>
                             </div>
                         </form>
+                        
+                        <script>
+                        document.getElementById("whatsappForm").addEventListener("submit", function(event) {
+                            event.preventDefault();
+                        
+                            let name = document.getElementById("name").value;
+                            let email = document.getElementById("email").value;
+                            let subject = document.getElementById("subject").value;
+                            let message = document.getElementById("message").value;
+                        
+                            let whatsappNumber = "9191234567890"; // remove + and spaces
+                            let whatsappURL = "https://wa.me/" + whatsappNumber + "?text="
+                                + "*New Contact Form Submission*%0A%0A"
+                                + "*Name:* " + encodeURIComponent(name) + "%0A"
+                                + "*Email:* " + encodeURIComponent(email) + "%0A"
+                                + "*Subject:* " + encodeURIComponent(subject) + "%0A"
+                                + "*Message:* " + encodeURIComponent(message);
+                        
+                            window.open(whatsappURL, "_blank");
+                        });
+                        </script>
+                        
                     </div>
                 </div>
             </div>
@@ -188,15 +209,13 @@
                     <a href="index.html" class="d-inline-block mb-3">
                         <h1 class="text-white">Nyla</h1>
                     </a>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor</p>
+                    <p class="mb-0">we are a team of interior designers</p>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                     <h5 class="text-white mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Thamarassery,calicut</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+91 8089 820 228</p>
+                    <p><i class="fa fa-envelope me-3"></i>nyladesigner0871@gmail.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
                                 class="fab fa-twitter"></i></a>
