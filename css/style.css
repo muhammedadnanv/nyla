@@ -164,13 +164,13 @@
     margin: 5px 0;
     width: 15px;
     height: 15px;
-    border: 2px solid var(--bs-white);
+    border: 2px solid var(--bs-gray-200);
     transition: .5s;
 }
 
 .header-carousel .owl-dot.active {
     height: 30px;
-    background: var(--bs-white);
+    background: var(--bs-gray-200);
 }
 
 
@@ -277,7 +277,7 @@
 
 .service-item.bg-light:hover .service-img h3 {
     background: var(--bs-primary);
-    color: var(--bs-white);
+    color: var(--bs-gray-200);
 }
 
 
@@ -448,7 +448,7 @@
 }
 
 .footer .copyright a:hover {
-    color: var(--bs-white);
+    color: var(--bs-gray-200);
 }
 
 .footer .footer-menu a {
