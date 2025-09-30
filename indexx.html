@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nyla Future — Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-overlay: rgba(128,128,128,0.57); /* #80808092 */
+      --text: #000000;
+      --accent: #101820; /* deep dark for contrast */
+      --muted: #666666;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:"Open Sans", sans-serif;font-size:1rem;font-weight:400;line-height:1.5;color:var(--text);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+    body{background:var(--bg-overlay);display:flex;align-items:center;justify-content:center;padding:2rem}
+
+    .card{width:100%;max-width:920px;background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));border-radius:14px;box-shadow:0 10px 30px rgba(16,24,32,0.12);padding:36px;border:1px solid rgba(0,0,0,0.06);text-align:center}
+
+    h1{margin:12px 0 6px;font-size:2rem;font-weight:700;color:var(--accent)}
+    p.lead{margin:0 0 20px;color:var(--muted);font-size:1rem}
+
+    .logo img{max-height:80px;margin-bottom:10px}
+
+    .counter{display:flex;gap:12px;justify-content:center;align-items:center;margin:22px 0 12px}
+    .timebox{background:#ffffff;border-radius:10px;padding:18px 14px;min-width:88px;box-shadow:0 6px 18px rgba(16,24,32,0.06);border:1px solid rgba(0,0,0,0.04)}
+    .timebox .num{font-size:1.6rem;font-weight:700;color:var(--accent);letter-spacing:0.5px}
+    .timebox .lbl{display:block;margin-top:6px;font-size:0.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.9px}
+
+    .meta{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:18px}
+    .meta a{color:var(--accent);text-decoration:none;font-weight:600}
+
+    .small{font-size:0.85rem;color:var(--muted)}
+
+    .footer{margin-top:18px;font-size:0.85rem;color:var(--muted)}
+
+    .btn{display:inline-block;margin-top:18px;padding:10px 18px;border-radius:10px;background:transparent;border:1.5px solid var(--accent);font-weight:700;color:var(--accent);text-decoration:none}
+
+    /* Utility classes user provided */
+    .border-light-gray{border-color:#80808092}
+    .bg-white{background-color:#80808092 !important}
+
+    /* Responsive */
+    @media (max-width:520px){
+      .timebox{min-width:64px;padding:14px}
+      .timebox .num{font-size:1.25rem}
+      h1{font-size:1.4rem}
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main" aria-labelledby="title">
+    <div class="logo">
+      <img src="https://www.nylainteriors.in/img/nylalogo.png" alt="Nyla Future Logo">
+    </div>
+    <h1 id="title">Nyla Future — Our website is launching soon</h1>
+    <p class="lead">This site is being developed and maintained by <a href="https://adwebcomicagency.vercel.app" target="_blank" rel="noopener noreferrer">Ad Web Comic Agency</a>. We're polishing the final touches — see the countdown below.</p>
+
+    <div id="countdown" class="counter" aria-live="polite">
+      <div class="timebox" aria-hidden="false">
+        <div class="num" id="days">00</div>
+        <div class="lbl">Days</div>
+      </div>
+      <div class="timebox">
+        <div class="num" id="hours">00</div>
+        <div class="lbl">Hours</div>
+      </div>
+      <div class="timebox">
+        <div class="num" id="minutes">00</div>
+        <div class="lbl">Minutes</div>
+      </div>
+      <div class="timebox">
+        <div class="num" id="seconds">00</div>
+        <div class="lbl">Seconds</div>
+      </div>
+    </div>
+
+    <div class="meta">
+      <div class="small">Need support or collaboration? <a href="https://adwebcomicagency.vercel.app" target="_blank" rel="noopener noreferrer">Contact Ad Web Comic Agency</a></div>
+    </div>
+
+    <a class="btn" href="https://adwebcomicagency.vercel.app" target="_blank" rel="noopener noreferrer">Visit agency</a>
+
+    <div class="footer">
+      <div class="small">Tip: edit <code>TARGET_DATE</code> inside the script to change the launch date/time. Current default is <strong>October 30, 2025 00:00 IST</strong>.</div>
+    </div>
+  </main>
+
+  <script>
+    // Default launch target. Edit this variable (ISO 8601) to change the date/time.
+    // Current default: October 30, 2025 00:00 Asia/Kolkata (IST)
+    // Use format: 'YYYY-MM-DDTHH:MM:SS+05:30' for explicit IST offset.
+    const TARGET_DATE = '2025-10-30T00:00:00+05:30';
+
+    // Elements
+    const $days = document.getElementById('days');
+    const $hours = document.getElementById('hours');
+    const $minutes = document.getElementById('minutes');
+    const $seconds = document.getElementById('seconds');
+
+    function pad(n){return String(n).padStart(2,'0')}
+
+    function updateCountdown(){
+      const now = new Date();
+      const target = new Date(TARGET_DATE);
+      const diff = target - now;
+      if(isNaN(target)){
+        $days.textContent = '--'; $hours.textContent='--'; $minutes.textContent='--'; $seconds.textContent='--';
+        return;
+      }
+      if(diff <= 0){
+        // Launch reached
+        $days.textContent = '00'; $hours.textContent='00'; $minutes.textContent='00'; $seconds.textContent='00';
+        // Optionally show a message or redirect
+        document.getElementById('countdown').setAttribute('aria-hidden','true');
+        const msg = document.createElement('p');
+        msg.className = 'lead';
+        msg.textContent = 'We are live — redirecting you to the new site...';
+        document.querySelector('main').insertBefore(msg, document.querySelector('.meta'));
+        // try redirect after short delay (uncomment if desired)
+        // setTimeout(()=> location.href='https://adwebcomicagency.vercel.app', 2500);
+        clearInterval(timer);
+        return;
+      }
+
+      const seconds = Math.floor(diff / 1000) % 60;
+      const minutes = Math.floor(diff / (1000 * 60)) % 60;
+      const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      $days.textContent = pad(days);
+      $hours.textContent = pad(hours);
+      $minutes.textContent = pad(minutes);
+      $seconds.textContent = pad(seconds);
+    }
+
+    // run immediately and then every second
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
