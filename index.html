@@ -1098,9 +1098,260 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+<!----->
+    <style>
+      /* Widgetify Core Styles - Responsive & Mobile-First */
+      .widgetify-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #25D366;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+        border: none;
+        outline: none;
+      }
+
+      .widgetify-widget:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .widgetify-popup {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 400px;
+        max-width: 90vw;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+
+      .widgetify-popup.show {
+        display: flex;
+        animation: fadeInUp 0.3s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .widgetify-header {
+        background-color: #f3f4f6;
+        padding: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e5e7eb;
+        border-radius: 10px 10px 0 0;
+        margin: -20px -20px 0 -20px;
+      }
+
+      .widgetify-header h3 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      .widgetify-close {
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: #6b7280;
+        cursor: pointer;
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .widgetify-close:hover {
+        color: #374151;
+      }
+
+      .widgetify-watermark {
+        background-color: #f9fafb;
+        border-top: 1px solid #e5e7eb;
+        padding: 8px 12px;
+        text-align: center;
+        margin: 20px -20px -20px -20px;
+        border-radius: 0 0 10px 10px;
+      }
+
+      .widgetify-watermark a {
+        color: #6b7280;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: 500;
+      }
+
+      .widgetify-watermark a:hover {
+        color: #374151;
+      }
+
+      /* UPI Gateway Specific Styles */
+      .upi-gateway-title {
+        margin: 16px 0 16px 0;
+        color: #1f2937;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .upi-gateway-qr {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #f3f4f6;
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      .upi-gateway-details {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #374151;
+      }
+
+      .upi-gateway-button {
+        width: 100%;
+        padding: 16px 0;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+      }
+
+      .upi-gateway-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+      }
+
+      .upi-gateway-note {
+        margin: 16px 0 0 0;
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      /* Responsive Mobile Design */
+      @media (max-width: 480px) {
+        .widgetify-widget {
+          bottom: 15px;
+          right: 15px;
+        }
+        
+        .widgetify-popup {
+          bottom: 85px;
+          right: 15px;
+          max-width: calc(100vw - 30px) !important;
+          margin: 0 !important;
+          border-radius: 8px !important;
+          padding: 16px !important;
+        }
+        
+        .upi-gateway-title {
+          font-size: 18px !important;
+        }
+        
+        .upi-gateway-details {
+          font-size: 13px !important;
+        }
+        
+        .upi-gateway-button {
+          padding: 14px 0 !important;
+          font-size: 15px !important;
+        }
+        
+        .upi-gateway-qr {
+          width: 160px !important;
+          height: 160px !important;
+        }
+        
+        .upi-gateway-note {
+          font-size: 11px !important;
+        }
+      }
+    </style>
+  
+        <div id="widgetify-whatsapp" class="widgetify-widget" onclick="toggleWidgetifyPopup()" aria-label="Open WhatsApp Chat">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.6 6.32A7.85 7.85 0 0 0 12 4.02a7.95 7.95 0 0 0-6.9 12.07L4 20.02l4.05-1.06A8.02 8.02 0 0 0 12 20.02a7.98 7.98 0 0 0 8-7.93c0-2.12-.83-4.12-2.4-5.62V6.32zm-5.6 12.2c-1.18 0-2.33-.32-3.33-.92l-.24-.14-2.47.65.66-2.41-.16-.25a6.63 6.63 0 0 1-1.02-3.52 6.57 6.57 0 0 1 11.29-4.57 6.45 6.45 0 0 1 2 4.55 6.57 6.57 0 0 1-6.57 6.57l-.16.04zm3.6-4.93c-.2-.1-1.17-.58-1.35-.64-.18-.06-.31-.1-.44.1-.13.2-.5.64-.61.77-.11.13-.23.15-.42.05-.2-.1-.84-.31-1.6-.99-.59-.52-.99-1.17-1.1-1.37-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.24-.02-.34-.05-.1-.44-1.06-.6-1.45-.16-.38-.32-.33-.44-.33-.11 0-.24-.02-.37-.02-.13 0-.34.05-.52.25-.18.2-.68.67-.68 1.62 0 .96.7 1.88.8 2 .1.14 1.4 2.16 3.42 3.02.48.2.85.33 1.14.43.48.15.91.13 1.26.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.08-.18-.12-.37-.21z" fill="white"/>
+          </svg>
+        </div>
+
+        <div id="widgetify-popup" class="widgetify-popup" role="dialog" aria-labelledby="chat-title">
+          <div class="widgetify-header">
+            <h3 id="chat-title">WhatsApp Chat</h3>
+            <button class="widgetify-close" onclick="toggleWidgetifyPopup()" aria-label="Close chat">×</button>
+          </div>
+          <div class="widgetify-content">
+            <div style="background-color: #f3f4f6; padding: 8px; border-radius: 8px; margin-bottom: 8px; max-width: 80%;">
+              <p style="margin: 0; font-size: 12px; color: #374151;">Hello! </p>
+            </div>
+          </div>
+          <div style="padding: 12px; border-top: 1px solid #e5e7eb; background-color: #f9fafb; border-radius: 0 0 10px 10px;">
+            <div style="display: flex; gap: 8px;">
+              <input type="text" placeholder="Type a message..." style="flex-grow: 1; font-size: 12px; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; outline: none;">
+              <button onclick="window.open('https://wa.me/918089820228?text=Hello!%20')" style="background-color: #25D366; color: white; padding: 8px; border: none; border-radius: 6px; cursor: pointer;" aria-label="Send message on WhatsApp">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="widgetify-watermark">
+            <a href="https://widgetify-two.vercel.app" target="_blank">Powered by Widgetify</a>
+          </div>
+        </div>
+
+        <script>
+          function toggleWidgetifyPopup() {
+            const popup = document.getElementById('widgetify-popup');
+            popup.classList.toggle('show');
+          }
+        </script>
+    <!------>
+
+
+    
 </body>
 
 </html>
+
 
 
 
