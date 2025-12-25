@@ -69,12 +69,12 @@
     margin-left: 30px;
     padding: 0;
     outline: none;
-    color: var(--bs-dark);
+    color: #808285;
 }
 
 .navbar .navbar-nav .nav-link:hover,
 .navbar .navbar-nav .nav-link.active {
-    color: var(--bs-primary)
+    color: #f3eee2;
 }
 
 .navbar .dropdown-toggle::after {
@@ -123,7 +123,7 @@
 .hero-header {
     margin-top: -100px;
     padding-top: 150px;
-    background: url(../img/hero-bg.jpg) top center no-repeat;
+    background: url(../img/bg.jpeg) top center no-repeat;
     background-size: cover;
 }
 
@@ -143,7 +143,7 @@
     right: 0;
     width: calc(50% + 45px);
     height: 100%;
-    background: var(--bs-primary);
+    background:#f3eee2;
     z-index: -1;
 }
 
@@ -187,11 +187,29 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: url(../img/bg-about-img.png) top left no-repeat;
+    background: url(../img/hero-bg.jpg) top left no-repeat;
     background-size: contain;
 }
 
+#about-date{
+    background-color: #26316a;
+}
 
+#about-history p{
+    color: #808285;
+}
+#feature-section h1{
+    color: #26316a;
+}
+#feature-section i{
+    color: #26316a;
+}
+#feature-section h4{
+    color: #26316a;
+}
+#feature-section p{
+    color: #808285;
+}
 /*** Project ***/
 .project-item img {
     transition: .5s;
@@ -212,10 +230,18 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
-    background: linear-gradient(rgba(255, 255, 255, .1) 50%, var(--bs-dark));
+    background: linear-gradient(rgba(58, 52, 52, 0.007) 50%, var(--bs-dark));
     z-index: 1;
 }
 
+#projects-section h1 span{
+    color: #26316a;
+    background-color: #f3eee2;
+}
+#projects-section h4 span{
+    background-color: #26316a;
+    padding: 0px 20px;
+}
 
 /*** Service ***/
 .service-item {
@@ -281,6 +307,30 @@
 }
 
 
+#service-section h1 span{
+    color: #f3eee2;
+    background-color: #808285;
+}
+#service-section p{
+    color: #808285;
+}
+
+#service-item1{
+    background-color: #808285;
+}
+#service-item1 h3{
+    color: #26316a;
+}
+#service-item1 p{
+    color: #26316a;
+}
+#service-item2{
+    background-color: #26316a;
+}
+
+#service-item2 h3{
+    color: #26316a;
+}
 /*** Our Team ***/
 .team-item img {
     transition: .5s;
@@ -314,6 +364,12 @@
 
 
 /*** Testimonial ***/
+#testimonial-section h3{
+    color: #26316a;
+}
+#testimonial-section p{
+    color: #808285;
+}
 .testimonial-img {
     position: relative;
     padding: 45px 0 45px 90px;
@@ -326,13 +382,14 @@
     left: 0;
     width: calc(50% + 45px);
     height: 100%;
-    background: var(--bs-primary);
+    background: #808285;
     z-index: -1;
 }
 
 .testimonial-text h5 {
     position: relative;
     padding-left: 45px;
+    color: #808285;
 }
 
 .testimonial-text h5::before {
@@ -343,7 +400,7 @@
     transform: translateY(-50%);
     width: 40px;
     height: 2px;
-    background: var(--bs-primary);
+    background: #26316a;
 }
 
 .testimonial-carousel .owl-dots {
@@ -361,13 +418,13 @@
     width: 15px;
     height: 15px;
     background: var(--bs-white);
-    border: 2px solid var(--bs-primary);
+    border: 2px solid #26316a;
     transition: .5s;
 }
 
 .testimonial-carousel .owl-dot.active {
     width: 30px;
-    background: var(--bs-primary);
+    background: #26316a;
 }
 
 @media (max-width: 768px) {
@@ -385,10 +442,20 @@
 
 /*** Newsletter ***/
 .newsletter {
-    background: url(../img/hero-bg.jpg) bottom right no-repeat;
+    background: url(../img/bg.jpeg) bottom right no-repeat;
     background-size: cover;
 }
+#newsletter-section h1{
+    color: #f3eee2;
+}
+#newsletter-section span{
+    background: #808285;
+    color: #f3eee2;
+}
 
+#newsletter-section p{
+    color: #808285;
+}
 @media (min-width: 992px) {
     .newsletter .container {
         max-width: 100% !important;
@@ -462,3 +529,9 @@
     padding-right: 0;
     border-right: none;
 }
+
+
+
+
+
+/*** ***********************about page section style************************************ ***/
